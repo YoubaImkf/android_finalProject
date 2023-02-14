@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Add Vector asset in Drawable -->
+<!-- Create Menu folder + main "layout" menu -->
+<!-- "@string/done" create the done value inside values.strings -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/item_done"
+        android:icon="@drawable/baseline_done_24"
+        android:title="@string/done"
+        app:showAsAction="ifRoom"/>
+</menu>
