@@ -11,4 +11,4 @@ Android Studio app in java using fragments
 
 ![tab 1](./images_readme/tab1.png) 
 
-![tab 2](./images_readme/tab2.png) 
+[tab 2](./images_readme/tab2.png) 
