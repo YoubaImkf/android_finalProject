@@ -9,4 +9,6 @@ Android Studio app in java using fragments
 3th fragment : coming...
 
 
-[tab 1](./images_readme/tab1.png) [tab 2](./images_readme/tab2.png) [tab 3(./images_readme/tab3.png)
+![tab 1](./images_readme/tab1.png) 
+
+![tab 2](./images_readme/tab2.png) 
