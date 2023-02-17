@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 
 import com.example.demofragments.Models.Contact;
@@ -112,7 +114,7 @@ public class ContactsFragment extends Fragment {
      * Read the name/phone number of all the contacts.
      */
     @SuppressLint("Range")
-    private List<Contact> getContacts() {
+    public List<Contact> getContacts() {
         List<Contact> contacts = new ArrayList<>();
 
         ContentResolver cr = requireActivity().getContentResolver();
@@ -150,21 +152,56 @@ public class ContactsFragment extends Fragment {
         super.onCreateOptionsMenu(menu,inflater);
     }
 
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        //return super.onOptionsItemSelected(item);
+//        int id = item.getItemId();
+//
+//        if (id == R.id.item_done) {
+//            String itemSelected = "Selected item: \n";
+//
+//            for (int i=0; i < listView.getCount(); i++) {
+//                if ( listView.isItemChecked(i)) {
+//                    itemSelected += listView.getItemAtPosition(i) + "\n";
+//
+//                }
+//            }
+//            Toast.makeText(getContext(), itemSelected, Toast.LENGTH_SHORT).show();
+//            // Create a bundle to be sent to the other fragment
+//            Bundle bundle = new Bundle();
+//            bundle.putString("TEXT_VALUE",itemSelected);
+//
+//            // Send the bundle through the Fragment Manager
+//            getParentFragmentManager().setFragmentResult("CONTACT_NAME",bundle);
+//
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //return super.onOptionsItemSelected(item);
         int id = item.getItemId();
 
         if (id == R.id.item_done) {
-            String itemSelected = "Selected item: \n";
+            // Create a bundle to be sent to the other fragment
+
+            // Create a String array to store the names of the selected contacts
+            ArrayList<String> selectedContacts = new ArrayList<>();
 
             for (int i=0; i < listView.getCount(); i++) {
-                if ( listView.isItemChecked(i)) {
-                    itemSelected += listView.getItemAtPosition(i) + "\n";
+                if (listView.isItemChecked(i)) {
+                    selectedContacts.add(listView.getItemAtPosition(i).toString());
                 }
             }
-            Toast.makeText(getContext(), itemSelected, Toast.LENGTH_SHORT).show();
+
+            // Add the String array to the bundle
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList("SELECTED_CONTACTS", selectedContacts);
+            Log.d("ContactsFragment", "Setting result with selectedContacts: " + selectedContacts);
+            getParentFragmentManager().setFragmentResult("SELECTED_CONTACTS", bundle);
+
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 

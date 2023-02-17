@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.demofragments.Fragments.ResponsesFragment;
-import com.example.demofragments.Fragments.FragmentB;
+import com.example.demofragments.Fragments.SenderFragment;
 import com.example.demofragments.Fragments.ContactsFragment;
 
 public class PagerAdapter extends FragmentPagerAdapter {
@@ -25,7 +25,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return new ResponsesFragment();
             case 2:
-                return new FragmentB();
+                return new SenderFragment();
             default:
                 return null;
 

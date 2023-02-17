@@ -5,10 +5,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -24,7 +28,7 @@ import java.util.Objects;
 // SOURCES :
 // First course project - AndroidStudioProjects\MyApp
 // Alert dialog : https://stackoverflow.com/questions/2115758/how-do-i-display-an-alert-dialog-on-android
-//https://developer.android.com/training/data-storage/shared-preferences?hl=fr
+// https://developer.android.com/training/data-storage/shared-preferences?hl=fr
 public class ResponsesFragment extends Fragment {
 
     private ArrayList<String> responses = new ArrayList<>();
@@ -35,6 +39,8 @@ public class ResponsesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true); // make the options appear
 
         sharedPreferences = requireActivity().getPreferences(Context.MODE_PRIVATE);
         String responsesJson = sharedPreferences.getString("responses", "");
@@ -49,8 +55,6 @@ public class ResponsesFragment extends Fragment {
             responses.add("I'm good, thanks for asking.");
         }
 
-//        responses.add("Hello, how are you?");
-//        responses.add("I'm good, thanks for asking.");
     }
 
     @Override
@@ -84,14 +88,6 @@ public class ResponsesFragment extends Fragment {
             }
         });
 
-//        Button deleteButton = view.findViewById(R.id.delete_button);
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                responses.remove();
-//            }
-//
-//        });
         return view;
 
     }
@@ -126,14 +122,6 @@ public class ResponsesFragment extends Fragment {
     }
 
 
-    // Method called when the app is paused, such as when the user navigates away
-    // from the app or when the device goes to sleep.
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        saveResponses();
-//    }
-
 
     private void saveResponses(){
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -142,6 +130,14 @@ public class ResponsesFragment extends Fragment {
         editor.putString("responses", responsesJson);
         editor.apply();
     }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.main_menu, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+
+    
 
 
 }
