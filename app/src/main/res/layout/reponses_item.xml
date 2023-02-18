@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:padding="16dp">
 
-
+<!--    https://stackoverflow.com/questions/36369913/how-to-implement-multi-select-in-recyclerview-->
     <CheckBox
         android:id="@+id/chk_main"
         android:layout_width="wrap_content"
@@ -18,9 +18,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="18sp"
-
-        />
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/delete_button"

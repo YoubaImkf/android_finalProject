@@ -137,7 +137,7 @@ public class ResponsesFragment extends Fragment {
         super.onCreateOptionsMenu(menu,inflater);
     }
 
-    
+
 
 
 }
