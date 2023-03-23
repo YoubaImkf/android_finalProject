@@ -54,7 +54,6 @@ public class ContactsFragment extends Fragment {
         View result = inflater.inflate(R.layout.fragment_contacts, container, false);
 
         // Find the list view
-        //listView = (ListView) requireActivity().findViewById(R.id.list_view); // LA PUTAIN DE LIGNE DE TA CHEVRE la chevre ouais ...
         listView = result.findViewById(R.id.list_view);
 
         // Read and show the contacts
